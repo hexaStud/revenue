@@ -1,21 +1,10 @@
 import {app, BrowserWindow} from "electron";
 import * as path from "path";
 import {LocalStorage} from "./LocalStorage";
-import {ElectronUpdater} from "update-function";
-import {version} from "../../package.json";
 
 
 app.on("ready", async () => {
-    const updater: ElectronUpdater = new ElectronUpdater({
-        url: `https://hexa-studio.de/Update/?app=UmV2ZW51ZQ%3D%3D&os=win&version=` + escape(Buffer.from(version).toString("base64")),
-        tempName: "Revenue"
-    });
-
-    if (await updater.downloadUpdate()) {
-        updater.updateApplication();
-    } else {
-        updater.clearDownload();
-    }
+    // TODO write Updater;
 
     const storage: LocalStorage = new LocalStorage();
     let win: BrowserWindow = new BrowserWindow({
