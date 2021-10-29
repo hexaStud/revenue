@@ -1,0 +1,26 @@
+{
+    "name": "revenue",
+    "version": "0.1.0",
+    "description": "",
+    "main": "assets/js/window.js",
+    "scripts": {
+        "compile": "tsc",
+        "build": "tsc && electron-builder build --win --publish never --config electron-builder.json",
+        "start": "npm run compile && electron ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "electron-builder": "^22.11.7",
+        "electron": "^11.3.0"
+    },
+    "dependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/node": "^16.0.0",
+        "bcrypt": "^5.0.1",
+        "chart.js": "^3.4.0",
+        "typescript": "^4.3.5",
+        "update-function": "git+https://github.com/Christoph-Koschel/update-function.git"
+    }
+}

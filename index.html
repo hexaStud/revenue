@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>revenue</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<div id="background"
+     style="position: fixed; background: linear-gradient(-45deg, #4527a0, #23a6d5, #1565c0);background-size: 100% 400%;"></div>
+<div class="d-xl-flex justify-content-xl-center" id="loginView" style="padding-top: 10rem;">
+    <div>
+        <div class="text-center"
+             style="background-color: rgba(224,224,224,0.56);width: 250px;margin-right: auto;margin-left: auto;padding: 5px;border-top-right-radius: 15px;border-top-left-radius: 15px;">
+            <h1 style="margin: 0;">Login</h1>
+        </div>
+        <div class="d-xl-flex"
+             style="width: 500px;padding: 1rem;background-color: rgba(224,224,224,0.56);border-radius: 15px;">
+            <form id="loginViewForm" class="text-center" style="width: 100%;height: 100%;">
+                <div class="form-row" style="padding-top: 1rem;padding-bottom: 1rem;">
+                    <div class="col"><input name="username" class="form-control" type="text" placeholder="Username"
+                                            style="width: 100%;"></div>
+                </div>
+                <div class="form-row" style="padding-bottom: 1rem;">
+                    <div class="col"><input name="password" class="form-control" type="password" placeholder="Password"
+                                            style="width: 100%;"></div>
+                </div>
+                <div class="form-row" style="padding-bottom: 1rem;">
+                    <div class="col" style="height: 24px">
+                        <output name="output"></output>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary" type="button" id="loginViewChanger" style="margin-left: 15px;">
+                            New
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center" id="newView" style="padding-top: 10rem;display: none!important;">
+    <div>
+        <div class="text-center"
+             style="background-color: rgba(224,224,224,0.56);width: 250px;margin-right: auto;margin-left: auto;padding: 5px;border-top-right-radius: 15px;border-top-left-radius: 15px;">
+            <h1 style="margin: 0;">New</h1>
+        </div>
+        <div class="d-xl-flex"
+             style="width: 500px;padding: 1rem;background-color: rgba(224,224,224,0.56);border-radius: 15px;">
+            <form id="newViewForm" class="text-center" style="width: 100%;height: 100%;">
+                <div class="form-row" style="padding-top: 1rem;padding-bottom: 1rem;">
+                    <div class="col"><input name="username" class="form-control" type="text" placeholder="Username"
+                                            style="width: 100%;"></div>
+                </div>
+                <div class="form-row" style="padding-bottom: 1rem;">
+                    <div class="col"><input name="password" class="form-control" type="password" placeholder="Password"
+                                            style="width: 100%;"></div>
+                </div>
+                <div class="form-row" style="padding-bottom: 1rem;">
+                    <div class="col" style="height: 24px">
+                        <output name="output"></output>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Create</button>
+                        <button class="btn btn-primary" type="button" id="newViewChanger" style="margin-left: 15px;">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="homeView" style="display: none!important;">
+    <div id="yearsUi" style="display: none;">
+        <div class="row">
+            <div class="col">
+                <div class="btn-toolbar">
+                    <div class="btn-group" role="group">
+                        <button id="homeViewLogout" class="btn btn-primary" type="button">Logout</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="openYearPanel">Add Year</button>
+                        <button class="btn btn-primary" type="button" id="openExportPanel">Export Data</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="openSettingsPanel">Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <canvas id="yearStat" style="width:100%; max-height: 400px">
+                    Your PC do not support the canvas engine.
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="list-group" id="yearList">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="informationUi" style="display: none;">
+        <div class="row">
+            <div class="col">
+                <div class="btn-toolbar">
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="closeInformationUi">Back</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="openEditPanel">Edit</button>
+                        <button class="btn btn-primary" type="button" id="openDeleteYearPanel">Delete Year</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <canvas id="monthStat" style="width:100%; max-height:400px;">
+                    Your PC do not support the canvas engine.
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive" style="background-color: #fff;border-radius: 5px;">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>January<br></th>
+                            <th>February<br></th>
+                            <th>March<br></th>
+                            <th>April</th>
+                            <th>May<br></th>
+                            <th>June<br></th>
+                            <th>July<br></th>
+                            <th>August<br></th>
+                            <th>September<br></th>
+                            <th>October<br></th>
+                            <th>November<br></th>
+                            <th>December<br></th>
+                        </tr>
+                        </thead>
+                        <tbody id="informationUiDataTableBody">
+                        </tbody>
+                        <tfoot id="informationUiDataTableFooter" style="border-top: 2px solid rgb(222, 226, 230);">
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center align-items-xl-center panel" id="editPanel"
+     style="display: none!important;">
+    <div style="width: 1085px;background-color: #fff;border-radius: 15px;padding: 15px;height: 585px;">
+        <div class="row toolbarBackground" style="padding: 1rem;">
+            <div class="col-xl-12 offset-xl-0">
+                <div class="btn-toolbar">
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="closeEditPanel">Apply &amp; Close</button>
+                        <button class="btn btn-primary" type="button" id="sizeEditPanel">Maximize</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button id="editPanelAddRow" class="btn btn-primary" type="button">Add Row</button>
+                        <button id="editPanelDeleteRow" class="btn btn-primary" type="button">Delete Row</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="editPanelTableWrapper" style="height: 450px;overflow: auto;">
+                    <div class="table-responsive" style="background-color: #fff;border-radius: 5px;">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>January<br></th>
+                                <th>February<br></th>
+                                <th>March<br></th>
+                                <th>April</th>
+                                <th>May<br></th>
+                                <th>June<br></th>
+                                <th>July<br></th>
+                                <th>August<br></th>
+                                <th>September<br></th>
+                                <th>October<br></th>
+                                <th>November<br></th>
+                                <th>December<br></th>
+                            </tr>
+                            </thead>
+                            <tbody id="editPanelTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center align-items-xl-center panel" id="yearPanel"
+     style="display: none!important;">
+    <div style="background-color: #fff;padding: 15px;width: 500px;height: 220px;border-radius: 15px;">
+        <form id="yearPanelForm" style="padding-right: 2rem;padding-left: 2rem;">
+            <div class="form-row" style="padding-top: 2rem;padding-right: 0;padding-bottom: 1rem;padding-left: 0;">
+                <div class="col"><input class="form-control" type="text" name="year" required="" placeholder="Year"
+                                        autocomplete="off"></div>
+            </div>
+            <div class="form-row">
+                <div class="col" style="min-height: 24px;">
+                    <output name="output"></output>
+                </div>
+            </div>
+            <div class="form-row" style="padding-top: 2rem;">
+                <div class="col">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 20px;">Create</button>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-primary" type="reset" id="closeYearPanel" style="margin-right: 20px;">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center align-items-xl-center panel" id="exportPanel"
+     style="display: none!important;">
+    <div style="width: 1085px;height: 485px;padding: 15px;background-color: #fff;border-radius: 15px;">
+        <div class="row" style="padding: 1rem;">
+            <div class="col">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" type="button" id="closeExportPanel">Back</button>
+                    <button class="btn btn-primary" type="button" id="sizeExportPanel">Maximize</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-right: 1rem;padding-left: 1rem;">
+            <div class="col">
+                <form id="exportPanelForm">
+                    <div class="form-row">
+                        <div class="col"><label class="col-form-label">Select a output folder:</label></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <button class="btn btn-primary float-left" type="button" id="exportPanelFormSelectFileBTN">
+                                Select
+                            </button>
+                            <input class="form-control float-left" type="text" name="file" readonly=""
+                                   style="width: 250px;margin-left: 20px;"></div>
+                    </div>
+                    <div class="form-row" style="padding-top: 1rem;">
+                        <div class="col"><label class="col-form-label">Output Type:</label></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-check"><input value="csv" class="form-check-input" type="radio" name="type" checked=""
+                                                           id="formCheck-1"><label class="form-check-label"
+                                                                                   for="formCheck-1">csv</label></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col" style="min-height: 24px;">
+                            <output name="output"></output>
+                        </div>
+                    </div>
+                    <div class="form-row" style="padding-top: 2rem;">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Export</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center align-items-xl-center panel" id="deleteYearPanel"
+     style="display: none!important;">
+    <div style="width: 485px;height: 235px;background-color: #fff;border-radius: 15px;padding: 15px;">
+        <div class="row">
+            <div class="col text-center">
+                <h3>Delete Year?</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="padding-bottom: 2rem;padding-top: 1rem;">
+                <p>Do you really want to delete the year? The data <strong>cannot </strong>be restored.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" type="button" id="deleteYearPanelYes" style="margin-left: 2rem;">Yes
+                </button>
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-primary" type="button" id="deleteYearPanelNo" style="margin-right: 2rem;">No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-xl-flex justify-content-xl-center align-items-xl-center panel" id="settingsPanel"
+     style="display: none!important;">
+    <div style="width: 1085px;height: 485px;padding: 15px;background-color: #fff;border-radius: 15px;">
+        <div class="settingsPanelContentWrapper" style="width: 100%;height: 100%;overflow-y: auto;">
+            <div class="row" style="padding-top: 1rem;">
+                <div class="col">
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary" type="button" id="closeSettingsPanel">Close</button>
+                        <button class="btn btn-primary" type="button" id="sizeSettingsPanel">Maximize</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr style="border: 1px solid rgba(0,0,0,.125)!important;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 id="settingsUsername">Username</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive" id="userDataTable">
+                        <table class="table table-hover">
+                            <tbody id="settingsDataTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr style="border: 1px solid rgba(0,0,0,.125)!important;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Change your Password</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form id="settingsPanelChangePswForm">
+                        <div class="form-row">
+                            <div class="col" style="padding-bottom: 1rem;"><input class="form-control" type="password"
+                                                                                  name="oldPsw" required=""
+                                                                                  placeholder="Old Password"
+                                                                                  style="max-width: 350px;"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="padding-bottom: 1rem;"><input class="form-control" type="password"
+                                                                                  name="newPsw" required=""
+                                                                                  placeholder="New Password"
+                                                                                  style="max-width: 350px;"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="min-height: 24px;">
+                                <output name="output"></output>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="padding-top: 1rem;">
+                                <button class="btn btn-primary" type="submit">Change</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr style="border: 1px solid rgba(0,0,0,.125)!important;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Delete your Account</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form id="settingsPanelDeleteAccForm">
+                        <div class="form-row">
+                            <div class="col">
+                                <p>If you delete your account, there will be no way to recover the data afterwards.</p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="padding-bottom: 1rem;"><input name="psw" class="form-control" type="password"
+                                                                                  required="" placeholder="Password"
+                                                                                  style="max-width: 350px;"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="min-height: 24px;">
+                                <output name="output"></output>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col" style="padding-top: 1rem;">
+                                <button class="btn btn-primary" type="submit">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>require("./assets/js/view");</script>
+</body>
+
+</html>

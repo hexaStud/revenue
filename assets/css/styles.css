@@ -1,0 +1,110 @@
+:root {
+    --editPanel-maximize-tableWrapper-height: none;
+}
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: rgba(127, 127, 127, 0.6);
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+    background: rgba(95, 91, 91, 1);
+}
+
+::-webkit-scrollbar-corner {
+    background: none;
+}
+
+body > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.panel.maximize {
+    display: block !important;
+}
+
+.panel.maximize > div {
+    border-radius: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    padding-top: 0 !important;
+}
+
+.list-group > .list-group-item:hover {
+    background-color: rgba(237, 237, 237, 0.75);
+}
+
+.btn-toolbar > .btn-group {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#homeView > div > div {
+    margin: 1rem;
+}
+
+#homeView > div > div {
+    padding: 1rem;
+    background-color: rgba(224, 224, 224, 0.56);
+    border-radius: 15px;
+}
+
+#editPanel.maximize #editPanelTableWrapper {
+    height: var(--editPanel-maximize-tableWrapper-height) !important;
+    margin-top: 2rem !important;
+}
+
+#editPanel.maximize .toolbarBackground {
+    background-color: #f5f5f5;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+}
+
+#userDataTable tr > td:first-of-type {
+    font-weight: bold;
+}
+
+.settingsPanelContentWrapper > .row {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+

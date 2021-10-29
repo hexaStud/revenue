@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "sourceMap": true,
+        "strict": true,
+        "removeComments": true,
+        "lib": [
+            "ES2016",
+            "DOM"
+        ],
+        "declaration": true,
+        "declarationMap": true,
+        "sourceRoot": "assets/ts",
+        "outDir": "assets/js",
+        "declarationDir": "assets/header",
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "node_modules",
+        "assets/header"
+    ]
+}
