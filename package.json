@@ -2,7 +2,7 @@
     "name": "revenue",
     "version": "0.1.0",
     "description": "",
-    "main": "assets/js/window.js",
+    "main": "assets/ts/window.js",
     "scripts": {
         "compile": "tsc",
         "build": "tsc && electron-builder build --win --publish never --config electron-builder.json",

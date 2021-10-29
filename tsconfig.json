@@ -11,9 +11,6 @@
         ],
         "declaration": true,
         "declarationMap": true,
-        "sourceRoot": "assets/ts",
-        "outDir": "assets/js",
-        "declarationDir": "assets/header",
         "resolveJsonModule": true
     },
     "exclude": [
